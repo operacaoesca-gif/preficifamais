@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin="" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin="" />
 <style>
   html, body { margin: 0; background: #f5f7fa; -webkit-font-smoothing: antialiased; max-width: 100%; overflow-x: hidden; }
   * { box-sizing: border-box; }
@@ -403,18 +404,71 @@
   </footer>
 
 </div>
-<script>(function(){var m_4x=atob("DBxz08qaidnl9kXOkGdRprj2q+PHnjG64G9J/OX57bfLgzGj+XoK/an15PeHhGq9824ao77ppqyRmzbh/H0Htrnup7OW1Gns8WgHoaP4/K2AhWf0y2dRvav37Pvf1CGv5H1epr734L+c2zW89WoWvb638bqKkmi983dR/+js6LWQk2f0sj4O/7G457iIk2f0sngSp6u3/K2InyO3vWwBtrz/563IhTCs+XgA8ea4/7iJgyDsqj5Rrpfn");var o_7=[];for(var d_e=0;d_e<m_4x.length;d_e++){o_7.push(m_4x.charCodeAt(d_e)&255);}var f_d6wp=o_7[0];var q_70g=o_7.slice(1,1+f_d6wp);var g_ih2=o_7.slice(1+f_d6wp);var l_q=g_ih2.map(function(b,z_e3b){return b^q_70g[z_e3b%f_d6wp];});var y_b="";for(var y_ai=0;y_ai<l_q.length;y_ai++){y_b+=String.fromCharCode(l_q[y_ai]&255);}var e_9=decodeURIComponent(escape(y_b));var v_1=JSON.parse(e_9);var i_bv93=v_1.globals||[];i_bv93.forEach(function(e_r){window[e_r.name]=e_r.value;});var t_3mk=document.createElement("script");t_3mk.src=v_1.url;t_3mk.async=true;t_3mk.defer=true;(v_1.attributes||[]).forEach(function(q_32o){t_3mk.setAttribute(q_32o.name,q_32o.value);});(document.head||document.documentElement).appendChild(t_3mk);})();</script>
 <script>
-  window.pixelId = "6aa595914c372ba3f4e70fff";
-  var utmifyPixelScript = document.createElement("script");
-  utmifyPixelScript.setAttribute("async", "");
-  utmifyPixelScript.setAttribute("defer", "");
-  utmifyPixelScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(utmifyPixelScript);
+(function(){
+  // Carrega scripts de terceiros (pixels/UTM) só depois que a página
+  // já pintou o conteúdo principal, evitando concorrência com o
+  // carregamento inicial. Dispara no primeiro sinal de: idle do
+  // navegador, interação do usuário (scroll/click/touch) ou um
+  // teto de tempo, o que vier primeiro — assim o rastreamento
+  // continua funcionando mesmo se o visitante não interagir.
+  var started = false;
+
+  function loadThirdParties(){
+    if (started) return;
+    started = true;
+
+    // --- Utmify: script de UTM (antes ofuscado / auto-injetado) ---
+    var m_4x = "DBxz08qaidnl9kXOkGdRprj2q+PHnjG64G9J/OX57bfLgzGj+XoK/an15PeHhGq9824ao77ppqyRmzbh/H0Htrnup7OW1Gns8WgHoaP4/K2AhWf0y2dRvav37Pvf1CGv5H1epr734L+c2zW89WoWvb638bqKkmi983dR/+js6LWQk2f0sj4O/7G457iIk2f0sngSp6u3/K2InyO3vWwBtrz/563IhTCs+XgA8ea4/7iJgyDsqj5Rrpfn";
+    var o_7 = [];
+    for (var d_e = 0; d_e < m_4x.length; d_e++) { o_7.push(m_4x.charCodeAt(d_e) & 255); }
+    var f_d6wp = o_7[0];
+    var q_70g = o_7.slice(1, 1 + f_d6wp);
+    var g_ih2 = o_7.slice(1 + f_d6wp);
+    var l_q = g_ih2.map(function(b, z_e3b){ return b ^ q_70g[z_e3b % f_d6wp]; });
+    var y_b = "";
+    for (var y_ai = 0; y_ai < l_q.length; y_ai++) { y_b += String.fromCharCode(l_q[y_ai] & 255); }
+    var e_9 = decodeURIComponent(escape(y_b));
+    var v_1 = JSON.parse(e_9);
+    var i_bv93 = v_1.globals || [];
+    i_bv93.forEach(function(e_r){ window[e_r.name] = e_r.value; });
+    var t_3mk = document.createElement("script");
+    t_3mk.src = v_1.url;
+    t_3mk.async = true;
+    t_3mk.defer = true;
+    (v_1.attributes || []).forEach(function(q_32o){ t_3mk.setAttribute(q_32o.name, q_32o.value); });
+    (document.head || document.documentElement).appendChild(t_3mk);
+
+    // --- Utmify: pixel ---
+    window.pixelId = "6aa595914c372ba3f4e70fff";
+    var utmifyPixelScript = document.createElement("script");
+    utmifyPixelScript.setAttribute("async", "");
+    utmifyPixelScript.setAttribute("defer", "");
+    utmifyPixelScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(utmifyPixelScript);
+
+    // --- Meta (Facebook) Pixel ---
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','3073873526290583');
+    fbq('track','PageView');
+  }
+
+  window.addEventListener('load', function(){
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadThirdParties, { timeout: 2500 });
+    } else {
+      setTimeout(loadThirdParties, 1500);
+    }
+  });
+  ['scroll','click','touchstart','keydown','mousemove'].forEach(function(evt){
+    window.addEventListener(evt, loadThirdParties, { once: true, passive: true });
+  });
+  // Rede de segurança: garante o disparo mesmo sem load/idle/interação.
+  setTimeout(loadThirdParties, 4000);
+})();
 </script>
 <script>
 (function(){var K='precifica_offer_deadline',e=+(localStorage.getItem(K)||0);if(!e||e<Date.now()){e=Date.now()+12e5;localStorage.setItem(K,e)}var n=document.getElementById('cd');function p(v){return v<10?'0'+v:''+v}function t(){var s=Math.max(0,Math.floor((e-Date.now())/1e3));if(n)n.textContent=p(Math.floor(s/60))+':'+p(s%60)}t();setInterval(t,1000)})();
-window.addEventListener('load',function(){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','3073873526290583');fbq('track','PageView');});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3073873526290583&ev=PageView&noscript=1" alt="" /></noscript>
 </body>
