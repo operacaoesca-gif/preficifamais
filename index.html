@@ -31,6 +31,24 @@
 </template>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=optional" /></noscript>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3073873526290583');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3073873526290583&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #16233c; overflow-x: hidden">
@@ -41,7 +59,7 @@
       <div>
         <div style="font-family: 'Poppins', sans-serif; color: #f5a623; font-weight: 700; letter-spacing: .16em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px">Plataforma de Precificação</div>
         <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(29px, 4.6vw, 48px); line-height: 1.12; letter-spacing: -.01em; color: #ffffff; margin: 0 0 28px; text-wrap: pretty"><span style="color: #f5a623">Descubra</span> quanto você realmente precisa <span style="color: #f5a623">cobrar</span> pelo seu <span style="color: #f5a623">produto</span> ou <span style="color: #f5a623">serviço</span> — em <span style="color: #f5a623">poucos minutos</span>, sem fazer contas ou montar planilhas.</h1>
-        <p style="font-size: 21px; line-height: 1.5; color: #dbe3f2; margin: 0 0 22px; max-width: 620px">Pare de definir seus preços no “achômetro”  com a nossa ferramenta você descobre o preço ideal dos seus produtos e serviços de forma automatica.</p>
+        <p style="font-size: 21px; line-height: 1.5; color: #dbe3f2; margin: 0 0 22px; max-width: 620px">Pare de definir seus preços no "achômetro"  com a nossa ferramenta você descobre o preço ideal dos seus produtos e serviços de forma automatica.</p>
         <p style="font-size: 17px; color: #9fb0cf; margin: 0 0 40px">Use quantas vezes quiser. Sem mensalidade. Sem limites.</p>
         <div style="display: inline-flex; flex-direction: column; align-items: flex-start">
           <a href="https://pay.kiwify.com.br/1cvhyA6" target="_blank" rel="noopener" class="cta-btn" onclick="window.loadThirdParties && window.loadThirdParties(); if(window.fbq){fbq('track','InitiateCheckout');}" style="display: inline-block; background: linear-gradient(180deg, #fbb01c, #f5a021); color: #14213f; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(16px, 4.2vw, 20px); letter-spacing: .04em; padding: 20px clamp(24px, 6vw, 44px); border-radius: 8px; text-align: center; white-space: nowrap; box-shadow: 0 14px 34px rgba(245,166,35,.32); animation: ctaPulse 1.8s ease-in-out infinite">QUERO ACESSAR AGORA</a>
@@ -462,19 +480,9 @@
     };
     document.head.appendChild(utmifyPixelScript);
 
-    // --- Meta Pixel Code ---
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '3073873526290583');
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
-    // --- End Meta Pixel Code ---
+    // Meta Pixel: eventos adicionais (o pixel base já foi carregado
+    // imediatamente no <head>, então aqui só reforçamos com mais um evento).
+    if (window.fbq) { fbq('track', 'ViewContent'); }
   }
 
   window.addEventListener('load', function(){
@@ -494,6 +502,5 @@
 <script>
 (function(){var K='precifica_offer_deadline',e=+(localStorage.getItem(K)||0);if(!e||e<Date.now()){e=Date.now()+12e5;localStorage.setItem(K,e)}var n=document.getElementById('cd');function p(v){return v<10?'0'+v:''+v}function t(){var s=Math.max(0,Math.floor((e-Date.now())/1e3));if(n)n.textContent=p(Math.floor(s/60))+':'+p(s%60)}t();setInterval(t,1000)})();
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3073873526290583&ev=PageView&noscript=1" alt="" /></noscript>
 </body>
 </html>
