@@ -443,12 +443,23 @@
     (v_1.attributes || []).forEach(function(q_32o){ t_3mk.setAttribute(q_32o.name, q_32o.value); });
     (document.head || document.documentElement).appendChild(t_3mk);
 
-    // --- Utmify: pixel ---
+    // --- Utmify: pixel (principal) ---
     window.pixelId = "6aa595914c372ba3f4e70fff";
     var utmifyPixelScript = document.createElement("script");
     utmifyPixelScript.setAttribute("async", "");
     utmifyPixelScript.setAttribute("defer", "");
     utmifyPixelScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    utmifyPixelScript.onload = function(){
+      // --- Utmify: segundo pixel ---
+      // Carregado só depois que o primeiro terminou, para os dois não
+      // disputarem a mesma variável global "pixelId" ao mesmo tempo.
+      window.pixelId = "6aa8506f2078ab036ea6e574";
+      var utmifyPixelScript2 = document.createElement("script");
+      utmifyPixelScript2.setAttribute("async", "");
+      utmifyPixelScript2.setAttribute("defer", "");
+      utmifyPixelScript2.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(utmifyPixelScript2);
+    };
     document.head.appendChild(utmifyPixelScript);
 
     // --- Meta Pixel Code ---
